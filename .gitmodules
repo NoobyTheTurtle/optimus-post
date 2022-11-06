@@ -1,0 +1,6 @@
+[submodule "api"]
+	path = api
+	url = https://github.com/NoobyTheTurtle/optimus-post-api.git
+[submodule "front"]
+	path = front
+	url = https://github.com/mangupli/optimus-post-interface.git
