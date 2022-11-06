@@ -3,8 +3,8 @@
 - _Лучшее_ 
 - _Описание_
 
-#### [Ссылка на репозитой backend'а](https://github.com/NoobyTheTurtle/optimus-post-api)
-#### [Ссылка на репозитой frontend'а](https://github.com/mangupli/optimus-post-interface)
+#### [Ссылка на репозиторий backend'а](https://github.com/NoobyTheTurtle/optimus-post-api)
+#### [Ссылка на репозиторий frontend'а](https://github.com/mangupli/optimus-post-interface)
 
 ### Инициализация проекта
 1. [Установите](https://www.docker.com/) `docker` и `docker compose`
