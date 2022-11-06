@@ -8,7 +8,7 @@
 
 ### Инициализация проекта
 1. [Установите](https://www.docker.com/) `docker` и `docker compose`
-2. Клонируйте данный репозиторий
+2. Клонируйте данный репозиторий и его sub-репозитории `git clone --recurse-submodules https://github.com/NoobyTheTurtle/optimus-post.git`
 3. Иницализируем `env` переменные `./optimus-post.sh init_env`
 4. В файле `./api/.env` заполняем:
    * `POSTGRES_PASSWORD, PGPASSWORD` - пароль для базы данных
