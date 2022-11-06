@@ -1,6 +1,9 @@
 #!/bin/bash
 
 case $1 in
+  init_env)
+    cat ./front/.env.example > ./front/.env
+    cat ./api/.env.example > ./api/.env ;;
   init_db)
     echo "======== CREATE ROLE TO POSTGRES"
     docker exec -it optimus-post-postgres psql -h postgres -Upostgres -c "CREATE USER optimus_post WITH PASSWORD '$2';"
@@ -33,6 +36,6 @@ case $1 in
   swagger)
     docker exec -it optimus-post-app bash -c "SWAGGER_DRY_RUN=0 RAILS_ENV=test rake rswag:specs:swaggerize" ;;
   *)
-    echo "Using: ./optimus-post.sh [init_db 'db_password', start, stop, rmi, build, connect, seed, console, migrate, rspec, swagger]"
+    echo "Using: ./optimus-post.sh [init_db 'db_password', init_env, start, stop, rmi, build, connect, seed, console, migrate, rspec, swagger]"
     echo "./optimus-post.sh rmi removes all images in the system, be careful!" ;;
 esac;

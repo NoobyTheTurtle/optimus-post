@@ -4,28 +4,29 @@
 - _Описание_
 
 #### [Ссылка на проект backend'а](https://github.com/NoobyTheTurtle/optimus-post-api)
-#### [Ссылка на проект front'а](https://github.com/mangupli/optimus-post-interface)
+#### [Ссылка на проект frontend'а](https://github.com/mangupli/optimus-post-interface)
 
-### Запуск проекта
-1. Установите `docker` и `docker compose`
+### Первый запуск проекта
+1. Установите `docker` и `docker compose` [ссылка](https://www.docker.com/)
 2. Клонируйте данный репозиторий к себе
-3. Переходим в папку с api `cd api`
-4. Копируем `env` переменные: `cat .env.example > .env` и заполняем недостающие переменные
+3. Иницализируем `env` переменные `./optimus-post.sh init_env`
+4. В файле `./api/.env` заполняем недостающие переменные
    * `POSTGRES_PASSWORD, PGPASSWORD` - пароль для базы данных
    * `DATABASE_PASSWORD` - пароль приложения для базы данных
-   * `API_KEY_MOS_RU` - api ключ для mos.ru
-5. Переходим в папку с front `cd ../front` и копируем `env` переменные: `cat .env.example > .env`
-6. Возвращаемся в корневую папку `cd ..`
-7. Запускаем сборку проекта `./optimus-post.sh start`
-8. Ждём
-9. Запускаем создание базы данных `./optimus-post.sh init_db "пароль приложения для базы данных"` (скрипт потребует ввести пароль для базы данных)
-10. Запускаем создание заготовленных данных `./optimus-post.sh seed`
-11. Приложение запущено
+   * `API_KEY_MOS_RU` - API ключ для mos.ru
+5. Запускаем сборку проекта `./optimus-post.sh start`
+6. Ждём
+7. Запускаем создание базы данных `./optimus-post.sh init_db "пароль приложения для базы данных"` (скрипт потребует ввести пароль для базы данных)
+8. Запускаем создание заготовленных данных `./optimus-post.sh seed`
+9. Приложение запущено
    * `http://localhost/` - Сайт
    * `http://localhost:3000/api-docs/index.html` - Документация к API (Swagger)
    * `http://localhost:3000/sidekiq/` - Страница управления фоновами задачами
----
-* Rspec-тесты запускаются через `./optimus-post.sh rspec`.
+
+### Запуск проект `./optimus-post.sh start`
+
+### Вспомогательные команды
+* Запустить тесты `./optimus-post.sh rspec`.
 * Пересгенирировать документацию к API `./optimus-post.sh swagger`.
 * Прогнать миграции `./optimus-post.sh migrate`.
 * Пересобрать контейнеры `./optimus-post.sh build`.
