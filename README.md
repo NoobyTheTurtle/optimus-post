@@ -41,6 +41,9 @@
 
 ### [Ссылка на проект](http://188.72.109.162/)
 ### [Ссылка на документацию к API](http://188.72.109.162:3000/api-docs/index.html)
+### [Ссылка на макет](https://www.figma.com/file/Y1n6e4PtagPXHznwegUPa8/Optimus-Post?node-id=0%3A1)
+
+#### Алгоритм подсчета трафика находится в папке notebooks-mos-traffic
 
 ### Технологии
 - Rails / Ruby (Backend)
