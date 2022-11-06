@@ -3,6 +3,9 @@
 - _Лучшее_ 
 - _Описание_
 
+#### [Ссылка на проект backend'а](https://github.com/NoobyTheTurtle/optimus-post-api)
+#### [Ссылка на проект front'а](https://github.com/mangupli/optimus-post-interface)
+
 ### Запуск проекта
 1. Установите `docker` и `docker compose`
 2. Клонируйте данный репозиторий к себе
@@ -34,6 +37,7 @@
 * Запустить проект `./optimus-post.sh start`.
 
 ### [Ссылка на проект](http://188.72.109.162/)
+### [Ссылка на документацию к API](http://188.72.109.162/api-docs/index.html)
 
 ### Технологии
 - Rails / Ruby (Backend)
