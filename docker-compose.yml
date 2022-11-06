@@ -1,0 +1,89 @@
+version: '3'
+
+services:
+  app:
+    container_name: optimus-post-app
+    build:
+      context: ./api
+      dockerfile: Dockerfile
+    command: 'bash -c "bundle install && bundle exec rails s -p 3000 -b 0.0.0.0"'
+    volumes:
+      - .:/api
+      - bundle_cache:/bundle_cache
+    ports:
+      - ${APP_PORT}:${APP_PORT}
+    depends_on:
+      - postgres
+      - redis
+      - sidekiq
+    environment:
+      - BUNDLE_PATH=bundle_cache
+    env_file: ./api/.env
+    tty: true
+    stdin_open: true
+
+  front:
+    container_name: optimus-post-front
+    environment:
+      NODE_ENV: production
+    ports:
+      - "80:80"
+    build:
+      context: ./front
+      dockerfile: Dockerfile
+    depends_on:
+      - app
+    stdin_open: true
+    tty: true
+    volumes:
+      - ./front:/front
+      - /front/node_modules
+
+  sidekiq:
+    container_name: optimus-post-sidekiq
+    build:
+      context: ./api
+    env_file:
+      - ./api/.env
+    command: 'bash -c "bundle install && bundle exec sidekiq -C config/sidekiq.yml"'
+    volumes:
+      - .:/api
+      - bundle_cache:/bundle_cache
+    privileged: true
+    environment:
+      - BUNDLE_PATH=/bundle_cache
+    depends_on:
+      - postgres
+      - redis
+
+  postgres:
+    container_name: optimus-post-postgres
+    image: postgres:15.0
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=$POSTGRES_PASSWORD
+      - DATABASE_PASSWORD=$DATABASE_PASSWORD
+      - DATABASE_USER=$DATABASE_USER
+    restart: always
+    ports:
+      - "5432:5432"
+
+  redis:
+    container_name: optimus-post-redis
+    image: redis:7.0
+    restart: always
+    ports:
+      - "127.0.0.1:6379:6379"
+
+  bundle_cache:
+    image: busybox
+    volumes:
+      - bundle_cache:/bundle_cache
+
+volumes:
+  db_data:
+  bundle_cache:
+
